@@ -219,7 +219,7 @@
 	you still have quite a way to go before you're a proper knight. \
 	But now you're someone that can be trusted to represent the realm in some capacity, with the corresponding privileges in equipment."
 	outfit = /datum/outfit/job/roguetown/squire/esquirearms
-	// maximum_possible_slots = 1  //commented out since I don't think OV would need it ourselves, but if an AP dev wants to try this out then may as well have the obvious balance decision
+	// maximum_possible_slots = 1  //commented out since I think OV can be chill about this with our PVE-lean
 	category_tags = list(CTAG_SQUIRE)
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_GUARDSMAN)
 	subclass_stats = list(
@@ -266,7 +266,7 @@
 	)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Longsword","Steel Mace","Steel Axe","Halberd") //likely will expand to cover a few more options, e.g rapiers or flails
+		var/weapons = list("Longsword","Steel Mace","Steel Axe","Halberd", "Sword and Shield") //likely will expand to cover a few more options, e.g rapiers or flails
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -284,6 +284,12 @@
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				r_hand = /obj/item/rogueweapon/halberd
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
+			if("Sword and Shield")
+				beltr = /obj/item/rogueweapon/scabbard/sword
+				r_hand = /obj/item/rogueweapon/sword
+				backl = /obj/item/rogueweapon/shield/heater
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_WORKING_CLASS, H)
 
@@ -293,7 +299,7 @@
 	you have made yourself into a proper skirmisher...in training. But one that a few soldiers of the keep may even consider \
 	respectable in skills."
 	outfit = /datum/outfit/job/roguetown/squire/seniorskirmisher
-
+	// maximum_possible_slots = 1  //commented out since I think OV can be chill about this with our PVE-lean
 	category_tags = list(CTAG_SQUIRE)
 	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_GUARDSMAN)
 	subclass_stats = list(
@@ -338,7 +344,7 @@
 		)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Bow","Crossbow","Sling","Rapier") //likely will expand to cover a few more options, e.g rapiers or flails
+		var/weapons = list("Bow","Crossbow","Sling","Rapier","Shortsword and Buckler") //likely will expand to cover a few more options, e.g rapiers or flails
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -358,5 +364,11 @@
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/rapier
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+			if("Shortsword and Buckler")
+				beltr = /obj/item/rogueweapon/scabbard/sword
+				r_hand = /obj/item/rogueweapon/sword/short
+				backl = /obj/item/rogueweapon/shield/buckler
+				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
+
 	if(H.mind)
 		SStreasury.grant_savings(ECONOMIC_WORKING_CLASS , H)
