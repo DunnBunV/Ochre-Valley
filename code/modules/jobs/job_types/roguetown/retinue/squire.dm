@@ -25,8 +25,8 @@
 	job_subclasses = list(
 		/datum/advclass/squire/lancer,
 		/datum/advclass/squire/footman,
-		/datum/advclass/squire/skirmisher,
-		/datum/advclass/squire/seniorsquirearms, //OV add
+		/datum/advclass/squire/skirmisher, //OV Edit
+		/datum/advclass/squire/seniorsquirearms,
 		/datum/advclass/squire/seniorskirmisher
 	)
 

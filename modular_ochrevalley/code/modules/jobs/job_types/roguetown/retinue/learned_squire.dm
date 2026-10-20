@@ -51,7 +51,7 @@
 	)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Longsword","Steel Mace","Steel Axe","Halberd", "Sword and Shield") //likely will expand to cover a few more options, e.g rapiers or flails
+		var/weapons = list("Longsword","Steel Mace","Steel Axe","Halberd", "Sword and Shield")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -129,12 +129,12 @@
 		)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Bow","Crossbow","Sling","Rapier","Shortsword and Buckler") //likely will expand to cover a few more options, e.g rapiers or flails
+		var/weapons = list("Bow","Crossbow","Sling","Rapier","Shortsword and Buckler")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
 			if("Bow")
-				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
+				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
 				beltr = /obj/item/quiver/arrows
 				H.adjust_skillrank_up_to(/datum/skill/combat/bows, SKILL_LEVEL_EXPERT, TRUE)
 			if("Crossbow")
