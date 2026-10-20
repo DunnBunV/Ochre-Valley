@@ -6,7 +6,7 @@
 	outfit = /datum/outfit/job/roguetown/squire/esquirearms
 	// maximum_possible_slots = 1  //commented out since I think OV can be chill about this with our PVE-lean
 	category_tags = list(CTAG_SQUIRE)
-	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_GUARDSMAN)
+	traits_applied = list(TRAIT_MEDIUMARMOR)
 	subclass_stats = list(
 		STATKEY_STR = 1,
 		STATKEY_SPD = 1,
@@ -86,7 +86,7 @@
 	outfit = /datum/outfit/job/roguetown/squire/seniorskirmisher
 	// maximum_possible_slots = 1  //commented out since I think OV can be chill about this with our PVE-lean
 	category_tags = list(CTAG_SQUIRE)
-	traits_applied = list(TRAIT_DODGEEXPERT, TRAIT_GUARDSMAN)
+	traits_applied = list(TRAIT_DODGEEXPERT)
 	subclass_stats = list(
 		STATKEY_SPD = 2,
 		STATKEY_PER = 1,
