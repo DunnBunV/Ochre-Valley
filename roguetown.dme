@@ -4101,6 +4101,7 @@
 #include "modular_ochrevalley\code\recipes\bait_recipes.dm"
 #include "modular_ochrevalley\code\recipes\pastry_recipes.dm"
 #include "modular_ochrevalley\code\modules\jobs\job_types\roguetown\adventurer\types\combat\rogue.dm"
+#include "modular_ochrevalley\code\modules\jobs\job_types\roguetown\retinue\learned_squire.dm"
 #include "modular_ochrevalley\code\modules\jobs\job_types\roguetown\courtier\legacycouncillor.dm"
 #include "modular_ochrevalley\code\modules\mob\mob_helpers.dm"
 #include "modular_ochrevalley\code\modules\mob\dead\new_player\sprite_accessory\antennas.dm"
