@@ -28,7 +28,9 @@
 		/datum/advclass/knight/footknight,
 		/datum/advclass/knight/mountedknight,
 		/datum/advclass/knight/irregularknight,
-		/datum/advclass/knight/knightchampion
+		/datum/advclass/knight/knightchampion, //OV add
+		/datum/advclass/knight/veteran_squire
+		/datum/advclass/knight/veteranirreg_squire //OV end
 		)
 
 /datum/outfit/job/roguetown/knight

@@ -4,7 +4,7 @@
 	you still have quite a way to go before you're a proper knight. \
 	But now you're someone that can be trusted to represent the realm in some capacity, with the corresponding privileges in equipment."
 	outfit = /datum/outfit/job/roguetown/squire/esquirearms
-	min_pq = 3
+	min_pq = 4
 	// maximum_possible_slots = 1  //commented out since I think OV can be chill about this with our PVE-lean
 	category_tags = list(CTAG_SQUIRE)
 	traits_applied = list(TRAIT_MEDIUMARMOR)
@@ -85,7 +85,7 @@
 	you have made yourself into a proper skirmisher...in training. But one that a few soldiers of the keep may even consider \
 	respectable in skills."
 	outfit = /datum/outfit/job/roguetown/squire/seniorskirmisher
-	min_pq = 3
+	min_pq = 4
 	// maximum_possible_slots = 1  //commented out since I think OV can be chill about this with our PVE-lean
 	category_tags = list(CTAG_SQUIRE)
 	traits_applied = list(TRAIT_DODGEEXPERT)
