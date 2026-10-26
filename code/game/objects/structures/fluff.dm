@@ -1726,7 +1726,14 @@
 		if(H.has_flaw(/datum/charflaw/addiction/godfearing))
 			H.sate_addiction(/datum/charflaw/addiction/godfearing) //For the especially devout... // OV Edit: Makes this prayer method ACTUALLY satisfy the vice
 		H.visible_message(span_notice("[H] sends a silent prayer."), span_green("May the Ten forever grace us with their benevolent gaze..."))
-		H.add_stress(/datum/stressevent/psyprayer)
+		//OV edit: ok let's split this up so you at least get contextually appropriate quotes, c'mon now
+		If(istype(H.patron, /datum/patron/inhumen))
+			H.add_stress(/datum/stressevent/psyprayer/ascendant)
+		else if(istype(H.patron, /datum/patron/old_god))
+			H.add_stress(/datum/stressevent/psyprayer/psydon)
+		else //assume tennite if nothing else
+			H.add_stress(/datum/stressevent/psyprayer)
+		//OV end
 
 //Most of this comes from Astrata, as she is benevolent enough to at least help bring those back to the light from the darkness they came...
 /obj/structure/fluff/psycross/proc/self_revive(mob/living/carbon/H)
