@@ -136,10 +136,10 @@ GLOBAL_LIST_EMPTY(prayers)
 	SHOULD_CALL_PARENT(TRUE)
 	follower.playsound_local(follower, 'sound/misc/notice (2).ogg', 100, FALSE)
 	//OV edit - give them the right buff line depending on their patron
-		If(istype(follower.patron, /datum/patron/inhumen))
-			follower.add_stress(/datum/stressevent/psyprayer/ascendant)
-		else if(istype(follower.patron, /datum/patron/old_god))
-			follower.add_stress(/datum/stressevent/psyprayer/psydon)
-		else //assume tennite if nothing else
-			follower.add_stress(/datum/stressevent/psyprayer)
+	if(istype(follower.patron, /datum/patron/inhumen))
+		follower.add_stress(/datum/stressevent/psyprayer/ascendant)
+	else if(istype(follower.patron, /datum/patron/old_god))
+		follower.add_stress(/datum/stressevent/psyprayer/psydon)
+	else //assume tennite if nothing else
+		follower.add_stress(/datum/stressevent/psyprayer)
 	//OV end
