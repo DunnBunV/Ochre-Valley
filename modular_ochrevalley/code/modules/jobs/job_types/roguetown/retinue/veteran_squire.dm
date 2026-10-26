@@ -128,39 +128,31 @@
 	)
 
 
-/datum/outfit/job/roguetown/knight/irregularknight/pre_equip(mob/living/carbon/human/H)
+/datum/outfit/job/roguetown/knight/vetskirmisher/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/knight]
 	add_verb(H, /mob/proc/haltyell)
 
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Rapier + Longbow","Estoc + Recurve Bow","Stecher + Recurve Bow","Sabre + Buckler","Whip + Crossbow","Poleaxe + Sling")
-		var/armor_options = list("Light Armor", "Medium Armor", "Medium Cuirass")
+		var/weapons = list("Rapier","Shortsword + Recurve Bow","Sabre + Buckler","Whip + Crossbow","Axe + Sling")
+		var/armor_options = list("Light Armor","Medium Cuirass")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		var/armor_choice = input(H, "Choose your armor.", "TAKE UP ARMS") as anything in armor_options
 		H.set_blindness(0)
 		switch(weapon_choice)
-			if("Rapier + Longbow")
+			if("Rapier")
 				r_hand = /obj/item/rogueweapon/sword/rapier
-				beltl = /obj/item/rogueweapon/scabbard/sword/noble
-				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/longbow
-				beltr = /obj/item/quiver/arrows
+				beltl = /obj/item/rogueweapon/scabbard/sword
 
-			if("Estoc + Recurve Bow")
-				r_hand = /obj/item/rogueweapon/estoc
+			if("Shortsword + Recurve Bow")
+				r_hand = /obj/item/rogueweapon/sword
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
 				beltr = /obj/item/quiver/arrows
 				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
 
-			if("Stecher + Recurve Bow")
-				r_hand = /obj/item/rogueweapon/sword/long/ap
-				backl = /obj/item/rogueweapon/scabbard/sword/noble
-				beltr = /obj/item/quiver/arrows
-				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/bow/recurve
-
 			if("Sabre + Buckler")
-				beltl = /obj/item/rogueweapon/scabbard/sword/noble
+				beltl = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword/sabre
 				backl = /obj/item/rogueweapon/shield/buckler
 
@@ -168,12 +160,12 @@
 				beltl = /obj/item/rogueweapon/whip
 				backl = /obj/item/gun/ballistic/revolver/grenadelauncher/crossbow
 				beltr = /obj/item/quiver/bolt/standard
+				H.adjust_skillrank(/datum/skill/combat/whipsflails, SKILL_LEVEL_EXPERT, TRUE)
 
-			if("Poleaxe + Sling")
-				H.adjust_skillrank(/datum/skill/combat/slings, 4, TRUE)
-				H.adjust_skillrank_up_to(/datum/skill/combat/axes, 4, TRUE)
-				r_hand = /obj/item/rogueweapon/greataxe/steel/knight
-				backl = /obj/item/rogueweapon/scabbard/gwstrap
+			if("Axe + Sling")
+				H.adjust_skillrank(/datum/skill/combat/slings, SKILL_LEVEL_EXPERT, TRUE)
+				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
+				r_hand = /obj/item/rogueweapon/stoneaxe/battle
 				beltr = /obj/item/quiver/sling/iron
 				beltl = /obj/item/gun/ballistic/revolver/grenadelauncher/sling
 
@@ -182,49 +174,18 @@
 				shirt = /obj/item/clothing/suit/roguetown/armor/gambeson/heavy
 				pants = /obj/item/clothing/under/roguetown/heavy_leather_pants
 				armor = /obj/item/clothing/suit/roguetown/armor/leather/heavy/coat
-			if("Medium Armor")
-				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
-				pants = /obj/item/clothing/under/roguetown/chainlegs
-				armor = /obj/item/clothing/suit/roguetown/armor/brigandine/light/retinue
 			if("Medium Cuirass")
 				shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 				pants = /obj/item/clothing/under/roguetown/chainlegs
-				armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass/fluted
+				armor = /obj/item/clothing/suit/roguetown/armor/plate/cuirass
 
-		var/helmets = list(
-			"Pigface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface,
-			"Guard Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/guard,
-			"Barred Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/sheriff,
-			"Bucket Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket,
-			"Sugarloaf Helmet"		= /obj/item/clothing/head/roguetown/helmet/heavy/bucket/crusader,
-			"Knight's Armet"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight,
-			"Knight's Helmet"	= /obj/item/clothing/head/roguetown/helmet/heavy/knight/old,
-			"Knight's Greatplumed Armet"		= /obj/item/clothing/head/roguetown/helmet/heavy/knight/greatplume,
-			"Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored,
-			"Snouted Visored Sallet"	= /obj/item/clothing/head/roguetown/helmet/sallet/visored/snouted,
-			"Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet,
-			"Snouted Armet"				= /obj/item/clothing/head/roguetown/helmet/heavy/knight/armet/snouted,
-			"Hounskull Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/hounskull,
-			"Klappvisier Bascinet" = /obj/item/clothing/head/roguetown/helmet/bascinet/etruscan,
-			"Slitted Kettle" = /obj/item/clothing/head/roguetown/helmet/heavy/knight/skettle,
-			"Visored Barbute" = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/visor,
-			"Great Barbute" = /obj/item/clothing/head/roguetown/helmet/heavy/barbute/great,
-			"Snouted Burgonet" = /obj/item/clothing/head/roguetown/helmet/heavy/burgonet,
-			"Volfskulle Bascinet"		= /obj/item/clothing/head/roguetown/helmet/heavy/volfplate,
-			"Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface,
-			"Snouted Roundface Bascinet"	= /obj/item/clothing/head/roguetown/helmet/bascinet/pigface/roundface/snouted,
-			"None"
-		)
+		//get to the armoury for a helm, squire
 
-		var/helmchoice = input(H, "Choose your Helm.", "TAKE UP HELMS") as anything in helmets
-		if(helmchoice != "None")
-			head = helmets[helmchoice]
 	backpack_contents = list(
-		/obj/item/rogueweapon/huntingknife/idagger/steel/special = 1,
+		/obj/item/rogueweapon/huntingknife/idagger/steel = 1, //regular, no fancy noble things
 		/obj/item/rope/chain = 1,
-		/obj/item/rogueweapon/scabbard/sheath/noble = 1
+		/obj/item/rogueweapon/scabbard/sheath = 1
 	)
 	if(H.mind)
-		SStreasury.grant_savings(ECONOMIC_UPPER_CLASS, H)
-		H.mind.AddSpell(new /datum/action/cooldown/spell/takeprotege)
-
+		SStreasury.grant_savings(ECONOMIC_LOWER_MIDDLE_CLASS, H)
+	//no direct protege training + ain't that rich
