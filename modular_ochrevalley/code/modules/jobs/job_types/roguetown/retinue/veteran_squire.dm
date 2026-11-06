@@ -3,9 +3,10 @@
 	tutorial = "While not a full knight yet, whether for lack of opportunity or a preference to continue learning, \
 	calling you a simple squire would mean belitting the trials you have faced, even if they haven't earned you a title yet."
 	outfit = /datum/outfit/job/roguetown/knight/vetsquire
-	// min_pq = 7 tempted to give it higher PQ since taking this requires the understanding you're taking a debuff of a power class here.
+	min_pq = 7
 	category_tags = list(CTAG_ROYALGUARD)
 	//no good trainer, CAN get heavy armour if you pick a certain option
+	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	subclass_stats = list(
 		STATKEY_STR = 1, //eating general stat debuff
 		STATKEY_INT = 1,
@@ -55,7 +56,7 @@
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
 			if("Halberd")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-				r_hand = /obj/item/rogueweapon/halberd // make steel spear replacement at some point, maybe?
+				r_hand = /obj/item/rogueweapon/halberd
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 			if("Sword and Shield")
 				beltr = /obj/item/rogueweapon/scabbard/sword
@@ -66,7 +67,6 @@
 
 	shirt = /obj/item/clothing/suit/roguetown/armor/chainmail
 	pants = /obj/item/clothing/under/roguetown/chainlegs
-	backl = /obj/item/rogueweapon/shield/tower/metal
 	if(H.mind)
 		//get your helm from the armoury, squire
 		var/armors = list(
@@ -77,7 +77,7 @@
 		)
 		var/armorchoice = input(H, "Choose your armor.", "TAKE UP ARMOR") as anything in armors
 		armor = armors[armorchoice]
-		if(armorchoice = "Half-Plate" || armorchoice = "Fluted Half-Plate")
+		if(armorchoice == "Half-Plate" || armorchoice == "Fluted Half-Plate")
 			ADD_TRAIT(H, TRAIT_HEAVYARMOR, JOB_TRAIT)
 		else
 			ADD_TRAIT(H, TRAIT_MEDIUMARMOR, JOB_TRAIT)
@@ -97,7 +97,7 @@
 	tutorial = "Fully trained in some of the irregular arts, you're awaiting the opportunity to make knighthood and prove how useful \
 	these unusual fields of battle may be for a knight."
 	outfit = /datum/outfit/job/roguetown/knight/vetskirmisher
-	// min_pq = 7 tempted to give it higher PQ since taking this requires the understanding you're taking a debuff of a power class here.
+	min_pq = 7
 	traits_applied = list(TRAIT_MEDIUMARMOR, TRAIT_DODGEEXPERT)
 	category_tags = list(CTAG_ROYALGUARD)
 	subclass_stats = list(
@@ -132,7 +132,7 @@
 	..()
 	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/knight]
 	add_verb(H, /mob/proc/haltyell)
-
+	REMOVE_TRAIT(H, TRAIT_NOBLE, JOB_TRAIT) //ain't a noble yet
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/weapons = list("Rapier","Shortsword + Recurve Bow","Sabre + Buckler","Whip + Crossbow","Axe + Sling")

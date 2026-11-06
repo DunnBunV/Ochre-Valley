@@ -52,7 +52,7 @@
 	)
 	H.adjust_blindness(-3)
 	if(H.mind)
-		var/weapons = list("Longsword","Steel Mace","Steel Axe","Spear", "Sword and Shield")
+		var/weapons = list("Longsword","Steel Mace","Steel Axe","Halberd", "Sword and Shield")
 		var/weapon_choice = input(H, "Choose your weapon.", "TAKE UP ARMS") as anything in weapons
 		H.set_blindness(0)
 		switch(weapon_choice)
@@ -66,14 +66,14 @@
 			if("Steel Axe")
 				beltr = /obj/item/rogueweapon/stoneaxe/woodcut/steel
 				H.adjust_skillrank_up_to(/datum/skill/combat/axes, SKILL_LEVEL_EXPERT, TRUE)
-			if("Spear")
+			if("Halberd")
 				backl = /obj/item/rogueweapon/scabbard/gwstrap
-				r_hand = /obj/item/rogueweapon/spear // make steel spear replacement at some point, maybe?
+				r_hand = /obj/item/rogueweapon/halberd //if squires can get bardiches, they can get halberds as a treat
 				H.adjust_skillrank_up_to(/datum/skill/combat/polearms, SKILL_LEVEL_EXPERT, TRUE)
 			if("Sword and Shield")
 				beltr = /obj/item/rogueweapon/scabbard/sword
 				r_hand = /obj/item/rogueweapon/sword
-				backl = /obj/item/rogueweapon/shield/heater
+				backl = /obj/item/rogueweapon/shield/wood
 				H.adjust_skillrank_up_to(/datum/skill/combat/swords, SKILL_LEVEL_EXPERT, TRUE)
 				H.adjust_skillrank_up_to(/datum/skill/combat/shields, SKILL_LEVEL_JOURNEYMAN, TRUE)
 	if(H.mind)
