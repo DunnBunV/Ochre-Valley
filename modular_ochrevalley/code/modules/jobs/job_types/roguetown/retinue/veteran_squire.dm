@@ -38,6 +38,17 @@
 	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/knight]
 	add_verb(H, /mob/proc/haltyell)
 	REMOVE_TRAIT(H, TRAIT_NOBLE, JOB_TRAIT) //ain't a noble yet
+
+	//today in dirty things, how to manually remove that honorific-
+	var/honorary = "Ser"
+	if(H.titles_pref == TITLES_F)
+		honorary = "Dame"
+	if(H.titles_pref == TITLES_N) //OV Add: Gender Neutral Revamp
+		honorary = "Knight" //OV Add: Gender Neutral Revamp
+	// this time, checking if they DO have that honorific
+	if(findtextEx(H.real_name, "[honorary] ") != 0)
+		H.real_name = replacetextEx(H.real_name, "[honorary] ", "")
+		H.name = replacetextEx(H.name, "[honorary] ", "")
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/weapons = list("Longsword","Steel Mace","Battle Axe","Halberd", "Sword and Shield")
@@ -133,6 +144,16 @@
 	H.dna.species.soundpack_m = GLOB.voice_packs[/datum/voicepack/male/knight]
 	add_verb(H, /mob/proc/haltyell)
 	REMOVE_TRAIT(H, TRAIT_NOBLE, JOB_TRAIT) //ain't a noble yet
+	//today in dirty things, how to manually remove that honorific-
+	var/honorary = "Ser"
+	if(H.titles_pref == TITLES_F)
+		honorary = "Dame"
+	if(H.titles_pref == TITLES_N) //OV Add: Gender Neutral Revamp
+		honorary = "Knight" //OV Add: Gender Neutral Revamp
+	// this time, checking if they DO have that honorific
+	if(findtextEx(H.real_name, "[honorary] ") != 0)
+		H.real_name = replacetextEx(H.real_name, "[honorary] ", "")
+		H.name = replacetextEx(H.name, "[honorary] ", "")
 	H.adjust_blindness(-3)
 	if(H.mind)
 		var/weapons = list("Rapier","Shortsword + Recurve Bow","Sabre + Buckler","Whip + Crossbow","Axe + Sling")
