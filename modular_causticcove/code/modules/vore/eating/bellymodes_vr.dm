@@ -400,7 +400,7 @@
 
 //OV edit
 /obj/belly/proc/steal_mana(mob/living/L)
-  if((L.energy > 5) && (L.client)
+  if((L.energy > 5) && (L.client))
     L.energy_add(-5)
     owner.adjust_nutrition(5)
     if(owner.has_flaw(/datum/charflaw/addiction/manathirst, manabroken))
