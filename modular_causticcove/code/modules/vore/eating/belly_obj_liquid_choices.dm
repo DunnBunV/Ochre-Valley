@@ -337,8 +337,8 @@
 			gen_cost = 150
 			reagentid = REAGENT_TAINTED_BLOOD
 			reagentcolor = "#941010"
-			if(REAGENT_PURE_MANA)
-			generated_reagents = list(REAGENT_ID_PURE_MANA = 1)
+		if(REAGENT_PURE_MANA)
+			generated_reagents = list(REAGENT_ID_WATER = 1) //dummied out to match pot of mana since people will be power gamers about it otherwise orig: list(REAGENT_ID_PURE_MANA = 1)
 			if(reagent_name in our_reagents)
 				reagent_name = lowertext(REAGENT_PURE_MANA)
 			gen_amount = 1

@@ -76,7 +76,10 @@
 		user.visible_message(span_notice("[user] finishes eating [src]."), span_notice("I finish eating [src]. Yum!"))
 		user.reagents.add_reagent(/datum/reagent/medicine/manapot, 15)
 		///OV edit
-		M.sate_addiction(/datum/charflaw/addiction/manathirst, manabroken)
+		if(user.has_flaw(/datum/charflaw/addiction/manathirst))
+			user.sate_addiction(/datum/charflaw/addiction/manathirst)
+		if(user.has_flaw(/datum/charflaw/addiction/manabroken))
+			user.sate_addiction(/datum/charflaw/addiction/manabroken)
 		///OV edit end
 		qdel(src)
 

@@ -187,15 +187,18 @@
 	medicine_type = /datum/reagent/medicine/manapot
 
 ///OV edit
-/obj/item/chalk/attack(mob/living/target, mob/living/user)
+/obj/item/soap/mana/attack(mob/living/target, mob/living/user)
 
-	if (istype(user.used_intent, /datum/intent/food) && owner.has_flaw(/datum/charflaw/addiction/manathirst, manabroken))
+	if (istype(user.used_intent, /datum/intent/food) && (user.has_flaw(/datum/charflaw/addiction/manathirst) || user.has_flaw(/datum/charflaw/addiction/manabroken)))
 		user.visible_message(span_notice("[user] begins nibbling on [src]."), span_notice("I begin nibbling on [src]."))
 		if(!do_after(user, 2 SECONDS, target = src))
 			return
 		playsound(user.loc, 'sound/misc/eat.ogg', rand(30,60), TRUE)
 		user.visible_message(span_notice("[user] finishes eating [src]."), span_notice("I finish eating [src]. Yum!"))
-		M.sate_addiction(/datum/charflaw/addiction/manathirst, manabroken)
+		if(user.has_flaw(/datum/charflaw/addiction/manathirst))
+			user.sate_addiction(/datum/charflaw/addiction/manathirst)
+		if(user.has_flaw(/datum/charflaw/addiction/manabroken))
+			user.sate_addiction(/datum/charflaw/addiction/manabroken)
 		qdel(src)
 ///OV edit end
 

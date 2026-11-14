@@ -158,14 +158,17 @@
 
 /obj/item/roguegem/amethyst/attack(mob/living/target, mob/living/user)
 
-	if (istype(user.used_intent, /datum/intent/food) && owner.has_flaw(/datum/charflaw/addiction/manathirst, manabroken))
+	if (istype(user.used_intent, /datum/intent/food) && (user.has_flaw(/datum/charflaw/addiction/manathirst) || user.has_flaw(/datum/charflaw/addiction/manabroken)))
 		user.visible_message(span_notice("[user] begins nibbling on [src]."), span_notice("I begin nibbling on [src]."))
 		if(!do_after(user, 2 SECONDS, target = src))
 			return
-		playsound(user.loc, 'sound/misc/hit_rock.ogg', rand(30,60), TRUE)
+		playsound(user.loc, 'sound/foley/hit_rock.ogg', rand(30,60), TRUE)
 		user.visible_message(span_notice("[user] finishes eating [src]."), span_notice("I finish eating [src]. Yum!"))
 		user.reagents.add_reagent(/datum/reagent/medicine/manapot, 15)
-		M.sate_addiction(/datum/charflaw/addiction/manathirst, manabroken)
+		if(user.has_flaw(/datum/charflaw/addiction/manathirst))
+			user.sate_addiction(/datum/charflaw/addiction/manathirst)
+		if(user.has_flaw(/datum/charflaw/addiction/manabroken))
+			user.sate_addiction(/datum/charflaw/addiction/manabroken)
 		qdel(src)
 
 /obj/item/roguegem/amethyst/naledi
@@ -174,14 +177,17 @@
 
 /obj/item/roguegem/amethyst/naledi/attack(mob/living/target, mob/living/user)
 
-	if (istype(user.used_intent, /datum/intent/food) && owner.has_flaw(/datum/charflaw/addiction/manathirst, manabroken))
+	if(istype(user.used_intent, /datum/intent/food) && (user.has_flaw(/datum/charflaw/addiction/manathirst) || user.has_flaw(/datum/charflaw/addiction/manabroken)))
 		user.visible_message(span_notice("[user] begins nibbling on [src]."), span_notice("I begin nibbling on [src]."))
 		if(!do_after(user, 2 SECONDS, target = src))
 			return
-		playsound(user.loc, 'sound/misc/hit_rock.ogg', rand(30,60), TRUE)
+		playsound(user.loc, 'sound/foley/hit_rock.ogg', rand(30,60), TRUE)
 		user.visible_message(span_notice("[user] finishes eating [src]."), span_notice("I finish eating [src]. Yum!"))
 		user.reagents.add_reagent(/datum/reagent/medicine/manapot, 15)
-		M.sate_addiction(/datum/charflaw/addiction/manathirst, manabroken)
+		if(user.has_flaw(/datum/charflaw/addiction/manathirst))
+			user.sate_addiction(/datum/charflaw/addiction/manathirst)
+		if(user.has_flaw(/datum/charflaw/addiction/manabroken))
+			user.sate_addiction(/datum/charflaw/addiction/manabroken)
 		qdel(src) // Ponti told me to make this a delicious treat
 
 ///OV edit end
