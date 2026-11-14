@@ -403,7 +403,10 @@
   if((L.energy > 5) && (L.client))
     L.energy_add(-5)
     owner.adjust_nutrition(5)
-	owner.sate_addiction(/datum/charflaw/addiction/manathirst, manabroken)
+	if(owner.has_flaw(/datum/charflaw/addiction/manathirst))
+    owner.sate_addiction(/datum/charflaw/addiction/manathirst)
+    else if(owner.has_flaw(/datum/charflaw/addiction/manabroken))
+    owner.sate_addiction(/datum/charflaw/addiction/manabroken)
     if(prob(3))
       to_chat(L, span_warning("Your mana is slowly being siphoned away..."))
 //OV edit end
