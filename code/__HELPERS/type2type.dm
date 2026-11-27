@@ -314,9 +314,9 @@
 		covered_parts |= list(READABLE_ZONE_SKULL)
 	if(bpc & NECK)
 		covered_parts |= list(READABLE_ZONE_NECK)
-	if(bpc & FACE && !precise)
-		covered_parts |= list(READABLE_ZONE_FACE)
-	if(verbose || precise || !(bpc & FACE))
+	//if(bpc & FACE && !precise) // OV edit: doesn't seem to work as intended and I'm not about to go python diving about operators and bitfields
+	//	covered_parts |= list(READABLE_ZONE_FACE)
+	if(verbose || precise || (bpc & FACE)) //OV end
 		if(bpc & MOUTH)
 			covered_parts |= list(READABLE_ZONE_MOUTH)
 		if(bpc & NOSE)
